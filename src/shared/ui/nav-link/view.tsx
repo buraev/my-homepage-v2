@@ -2,7 +2,6 @@
 import type { ReactNode } from "react"
 import type { LinkProps } from "next/link"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
 import { usePathname } from "next/navigation"
 
 import { cx } from "@/shared/utils"

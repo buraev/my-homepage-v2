@@ -1,16 +1,14 @@
 "use client"
-import { Button } from "@/app/src/shared/ui"
-import { FormProvider, useForm } from "react-hook-form"
-
-import * as z from "zod"
-
-import { zodResolver } from "@hookform/resolvers/zod"
 import { useState, useTransition } from "react"
+import { FormProvider, useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import Link from "next/link"
+import { useSearchParams } from "next/navigation"
+import type * as z from "zod"
 
 import { NewPasswordSchema } from "@/app/schemas/shemas"
-import Link from "next/link"
 import { newPassword } from "@/app/src/entities/auth/newPassword/model"
-import { useSearchParams } from "next/navigation"
+import { Button } from "@/app/src/shared/ui"
 
 export default function NewPasswordPage() {
   const searchParams = useSearchParams()
@@ -55,11 +53,11 @@ export default function NewPasswordPage() {
               New password
             </label>
             <input
-              disabled={isPending}
               className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-white shadow focus:outline-none"
+              disabled={isPending}
               id="password"
-              type="password"
               placeholder="*****"
+              type="password"
               {...register("password")}
             />
           </div>
@@ -75,8 +73,8 @@ export default function NewPasswordPage() {
 
           <div className="flex flex-col items-center justify-between gap-5">
             <Button
-              disabled={isPending}
               className="hover:bg-orange/95 w-full md:w-fit"
+              disabled={isPending}
               size="sm"
               type="submit"
             >

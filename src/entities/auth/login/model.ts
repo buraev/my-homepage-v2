@@ -1,22 +1,24 @@
 "use server"
 
-import * as z from "zod"
+import { AuthError } from "next-auth"
+import type * as z from "zod"
+
+import { getTwoFactorTokenByEmail } from "../../tokens/model"
+import { getUserByEmail } from "../../user/model"
+import { getTwoFactorConfirmationByUserId } from "../twoFactorConfirmation/model"
+
 import { signIn } from "@/app/auth"
 import { DEFAUL_LOGIN_REDIRECT } from "@/app/routes"
 import { LoginSchema } from "@/app/schemas/shemas"
-import { AuthError } from "next-auth"
-import { getUserByEmail } from "../../user/model"
-import {
-  generateTwoFactorToken,
-  generateVerificationToken,
-} from "@/app/src/shared/lib/tokens"
+import { db } from "@/app/src/shared/lib/db"
 import {
   sendTwoFactorTokenEmail,
   sendVerificationEmail,
 } from "@/app/src/shared/lib/mail"
-import { getTwoFactorTokenByEmail } from "../../tokens/model"
-import { db } from "@/app/src/shared/lib/db"
-import { getTwoFactorConfirmationByUserId } from "../twoFactorConfirmation/model"
+import {
+  generateTwoFactorToken,
+  generateVerificationToken,
+} from "@/app/src/shared/lib/tokens"
 
 export const loginUser = async (values: z.infer<typeof LoginSchema>) => {
   const validateFields = LoginSchema.safeParse(values)

@@ -1,18 +1,16 @@
 "use client"
-import { Button } from "@/app/src/shared/ui"
-import { FormProvider, useForm } from "react-hook-form"
-
-import * as z from "zod"
-
-import { zodResolver } from "@hookform/resolvers/zod"
-import { loginUser } from "@/entities/auth/login/model"
 import { useState, useTransition } from "react"
-import { DEFAUL_LOGIN_REDIRECT } from "@/app/routes"
-
-import { signIn } from "next-auth/react"
-import { useSearchParams } from "next/navigation"
-import { LoginSchema } from "@/app/schemas/shemas"
+import { FormProvider, useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
 import Link from "next/link"
+import { useSearchParams } from "next/navigation"
+import { signIn } from "next-auth/react"
+import type * as z from "zod"
+
+import { DEFAUL_LOGIN_REDIRECT } from "@/app/routes"
+import { LoginSchema } from "@/app/schemas/shemas"
+import { Button } from "@/app/src/shared/ui"
+import { loginUser } from "@/entities/auth/login/model"
 
 export default function Auth() {
   const [errorMessage, setErrorMessage] = useState<string | undefined>()
@@ -64,7 +62,7 @@ export default function Auth() {
     })
   })
 
-  const onClick = (provider: "gooole" | "github") => {
+  const onClick = (provider: "github" | "gooole") => {
     signIn(provider, {
       callbackUrl: DEFAUL_LOGIN_REDIRECT,
     })
@@ -83,8 +81,8 @@ export default function Auth() {
                 Two factor token
               </label>
               <input
-                disabled={isPending}
                 className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-white shadow focus:outline-none"
+                disabled={isPending}
                 id="twofactor"
                 placeholder="*****"
                 {...register("code")}
@@ -98,11 +96,11 @@ export default function Auth() {
                   Email
                 </label>
                 <input
-                  disabled={isPending}
                   className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-white shadow focus:outline-none"
+                  disabled={isPending}
                   id="username"
-                  type="text"
                   placeholder="Username"
+                  type="text"
                   {...register("email")}
                 />
               </div>
@@ -111,11 +109,11 @@ export default function Auth() {
                   Password
                 </label>
                 <input
-                  disabled={isPending}
                   className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-white shadow focus:outline-none"
+                  disabled={isPending}
                   id="password"
-                  type="password"
                   placeholder="******************"
+                  type="password"
                   {...register("password")}
                 />
               </div>
@@ -135,8 +133,8 @@ export default function Auth() {
 
           <div className="flex flex-col items-center justify-between gap-5">
             <Button
-              disabled={isPending}
               className="hover:bg-orange/95 w-full md:w-fit"
+              disabled={isPending}
               size="sm"
               type="submit"
             >

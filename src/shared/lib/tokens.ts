@@ -1,11 +1,13 @@
 import crypto from "crypto"
 import { v4 as uuidv4 } from "uuid"
-import { db } from "./db"
+
 import {
   getPasswordResetTokenByEmail,
+  getTwoFactorTokenByEmail,
   getVerificationTokenByEmail,
 } from "../../entities/tokens/model"
-import { getTwoFactorTokenByEmail } from "../../entities/tokens/model"
+
+import { db } from "./db"
 
 export const generateVerificationToken = async (email: string) => {
   const token = uuidv4()
@@ -18,15 +20,13 @@ export const generateVerificationToken = async (email: string) => {
       where: { id: existingToken.id },
     })
   }
-  const verificationToken = await db.verificationToken.create({
+  return await db.verificationToken.create({
     data: {
       email,
       token,
       expires,
     },
   })
-
-  return verificationToken
 }
 
 export const generatePasswordResetToken = async (email: string) => {
@@ -40,15 +40,13 @@ export const generatePasswordResetToken = async (email: string) => {
       where: { id: existingToken.id },
     })
   }
-  const passwordResetToken = await db.passwordResetToken.create({
+  return await db.passwordResetToken.create({
     data: {
       email,
       token,
       expires,
     },
   })
-
-  return passwordResetToken
 }
 
 export const generateTwoFactorToken = async (email: string) => {
@@ -63,13 +61,11 @@ export const generateTwoFactorToken = async (email: string) => {
       where: { id: existingToken.id },
     })
   }
-  const twoFactorToken = await db.twoFactorToken.create({
+  return await db.twoFactorToken.create({
     data: {
       email,
       token,
       expires,
     },
   })
-
-  return twoFactorToken
 }

@@ -1,10 +1,11 @@
 import Link from "next/link"
 
+import LoginSVG from "@/app/public/login.svg"
+import Y18 from "@/app/public/y18.svg"
+
 import { Container } from "@/app/src/shared/ui/container"
 import { NavLink } from "@/app/src/shared/ui/nav-link"
 import { cx } from "@/app/src/shared/utils"
-import Y18 from "@/app/public/y18.svg"
-import LoginSVG from "@/app/public/login.svg"
 
 export const Header = () => {
   return (

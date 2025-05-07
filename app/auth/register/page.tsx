@@ -1,18 +1,15 @@
 "use client"
 
-import { Button } from "@/app/src/shared/ui"
-
-import { FormProvider, useForm } from "react-hook-form"
-
-import { signIn } from "next-auth/react"
-
-import * as z from "zod"
-
-import { zodResolver } from "@hookform/resolvers/zod"
 import { useState, useTransition } from "react"
-import { registerUser } from "@/app/src/entities/auth/register/model"
+import { FormProvider, useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { signIn } from "next-auth/react"
+import type * as z from "zod"
+
 import { DEFAUL_LOGIN_REDIRECT } from "@/app/routes"
 import { RegisterSchema } from "@/app/schemas/shemas"
+import { registerUser } from "@/app/src/entities/auth/register/model"
+import { Button } from "@/app/src/shared/ui"
 
 export default function Register() {
   const [errorMessage, setErrorMessage] = useState<string | undefined>()
@@ -42,7 +39,7 @@ export default function Register() {
     })
   })
 
-  const onClick = (provider: "gooole" | "github") => {
+  const onClick = (provider: "github" | "gooole") => {
     signIn(provider, {
       callbackUrl: DEFAUL_LOGIN_REDIRECT,
     })
@@ -58,11 +55,11 @@ export default function Register() {
           <div className="flex flex-col gap-2">
             <label className="block text-sm font-bold text-white">Name</label>
             <input
-              disabled={isPending}
               className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-white shadow focus:outline-none"
+              disabled={isPending}
               id="username"
-              type="text"
               placeholder="Username"
+              type="text"
               {...register("name")}
             />
           </div>
@@ -70,11 +67,11 @@ export default function Register() {
           <div className="flex flex-col gap-2">
             <label className="block text-sm font-bold text-white">Email</label>
             <input
-              disabled={isPending}
               className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-white shadow focus:outline-none"
+              disabled={isPending}
               id="email"
-              type="text"
               placeholder="email"
+              type="text"
               {...register("email")}
             />
           </div>
@@ -83,11 +80,11 @@ export default function Register() {
               Password
             </label>
             <input
-              disabled={isPending}
               className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-white shadow focus:outline-none"
+              disabled={isPending}
               id="password"
-              type="password"
               placeholder="******************"
+              type="password"
               {...register("password")}
             />
           </div>
@@ -102,8 +99,8 @@ export default function Register() {
 
           <div className="flex flex-col items-center justify-between gap-5">
             <Button
-              disabled={isPending}
               className="hover:bg-orange/95 w-full md:w-fit"
+              disabled={isPending}
               size="sm"
               type="submit"
             >

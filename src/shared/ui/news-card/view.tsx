@@ -1,11 +1,8 @@
 "use client"
-import Image from "next/image"
 
 import { useRouter } from "next/navigation"
 
 import Audioslave from "../../../../public/audioslave.svg"
-
-import { BLUR } from "./constants"
 
 import { Card, Icon } from "@/shared/ui"
 import { cx } from "@/shared/utils"

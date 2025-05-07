@@ -1,16 +1,13 @@
 "use client"
-import { Button } from "@/app/src/shared/ui"
-import { FormProvider, useForm } from "react-hook-form"
-
-import * as z from "zod"
-
-import { zodResolver } from "@hookform/resolvers/zod"
-import { loginUser } from "@/entities/auth/login/model"
 import { useState, useTransition } from "react"
+import { FormProvider, useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import Link from "next/link"
+import type * as z from "zod"
 
 import { ResetSchema } from "@/app/schemas/shemas"
 import { resetPassword } from "@/app/src/entities/auth/resetPassword/model"
-import Link from "next/link"
+import { Button } from "@/app/src/shared/ui"
 
 export default function Reset() {
   const [errorMessage, setErrorMessage] = useState<string | undefined>()
@@ -49,11 +46,11 @@ export default function Reset() {
           <div className="flex flex-col gap-2">
             <label className="block text-sm font-bold text-white">Email</label>
             <input
-              disabled={isPending}
               className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-white shadow focus:outline-none"
+              disabled={isPending}
               id="username"
-              type="text"
               placeholder="email"
+              type="text"
               {...register("email")}
             />
           </div>
@@ -69,8 +66,8 @@ export default function Reset() {
 
           <div className="flex flex-col items-center justify-between gap-5">
             <Button
-              disabled={isPending}
               className="hover:bg-orange/95 w-full md:w-fit"
+              disabled={isPending}
               size="sm"
               type="submit"
             >
@@ -78,14 +75,13 @@ export default function Reset() {
                 Send reset email
               </span>
             </Button>
-   <Link
+            <Link
               className="text-primaryLight hover:text-secondaryMain inline-block align-baseline text-sm font-bold"
               href="/auth/login"
             >
               Back to login
             </Link>
           </div>
-          
         </form>
       </FormProvider>
       <p className="text-center text-xs text-gray-500">

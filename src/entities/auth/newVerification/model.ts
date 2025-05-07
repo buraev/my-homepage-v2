@@ -1,9 +1,9 @@
 "use server"
 
-import { db } from "@/app/src/shared/lib/db"
-
-import { getUserByEmail } from "../../user/model"
 import { getVerificationTokenByToken } from "../../tokens/model"
+import { getUserByEmail } from "../../user/model"
+
+import { db } from "@/app/src/shared/lib/db"
 
 export const newVerification = async (token: string) => {
   const existingToken = await getVerificationTokenByToken(token)

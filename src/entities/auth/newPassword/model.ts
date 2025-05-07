@@ -1,11 +1,12 @@
 "use server"
 
-import * as z from "zod"
-import { NewPasswordSchema } from "@/app/schemas/shemas"
+import bcrypt from "bcryptjs"
+import type * as z from "zod"
+
 import { getPasswordResetTokenByToken } from "../../tokens/model"
 import { getUserByEmail } from "../../user/model"
-import { emit } from "process"
-import bcrypt from "bcryptjs"
+
+import { NewPasswordSchema } from "@/app/schemas/shemas"
 import { db } from "@/app/src/shared/lib/db"
 
 export const newPassword = async (

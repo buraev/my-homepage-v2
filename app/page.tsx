@@ -1,19 +1,17 @@
 "use client"
+import localFont from "next/font/local"
 import Image from "next/image"
-
 import Link from "next/link"
 
 import profilePic from "../public/profile-img.jpg"
+
+import Doge from "../public/doge.svg"
+import FreeCodeCumpSVGLogo from "../public/free-code-camp-logo.svg"
+
 import { CreepingLineTextg } from "@/shared/consts/creepingLineText"
 import { Icon, NavLink, NewsCard } from "@/shared/ui"
 import { Button } from "@/shared/ui/button"
-import localFont from "next/font/local"
-
 import { Container } from "@/shared/ui/container"
-
-import FreeCodeCumpSVGLogo from "../public/free-code-camp-logo.svg"
-
-import Doge from "../public/doge.svg"
 
 const myFont = localFont({
   src: "../src/shared/assets/fonts/NewFontGGG-Regular.ttf",
@@ -123,9 +121,9 @@ export default function Home() {
       </div>
       <div className="flex gap-4">
         <NewsCard
-          PicSrc={<FreeCodeCumpSVGLogo />}
           className="flex-1"
           discription={"Best way learn to code - for free"}
+          PicSrc={<FreeCodeCumpSVGLogo />}
           title={"freeCodeCamp"}
         />
         <NewsCard

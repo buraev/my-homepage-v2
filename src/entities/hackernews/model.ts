@@ -5,11 +5,12 @@ import type {
   UseQueryResult,
 } from "@tanstack/react-query"
 import { useQuery } from "@tanstack/react-query"
+import axios from "axios"
 import qs from "qs"
 
+import type { HackerNewsType } from "./types"
+
 import type { QueryObject } from "@/shared/types"
-import axios from "axios"
-import { HackerNewsType } from "./types"
 
 async function fetchTopStores() {
   return await axios.get(`${process.env.NEXT_PUBLIC_HACKER_NEWS_TOP}`)
@@ -24,10 +25,9 @@ async function fetchItem(id: string) {
 
 async function main() {
   const topstories = await fetchTopStores()
-  const items = await Promise.all(
+  return await Promise.all(
     topstories.data.slice(0, 30).map((id: string) => fetchItem(id)),
   )
-  return items
 }
 
 export const useHackerNews = (

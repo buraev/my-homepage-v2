@@ -1,8 +1,9 @@
 "use client"
 
-import { newVerification } from "@/app/src/entities/auth/newVerification/model"
-import { useSearchParams } from "next/navigation"
 import { useCallback, useEffect, useState } from "react"
+import { useSearchParams } from "next/navigation"
+
+import { newVerification } from "@/app/src/entities/auth/newVerification/model"
 
 export default function NewVerification() {
   const [error, setError] = useState<string | undefined>("")
