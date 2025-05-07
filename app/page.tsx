@@ -1,103 +1,150 @@
-import Image from "next/image";
+"use client"
+import Image from "next/image"
+
+import Link from "next/link"
+
+import profilePic from "../public/profile-img.jpg"
+import { CreepingLineTextg } from "@/shared/consts/creepingLineText"
+import { Icon, NavLink, NewsCard } from "@/shared/ui"
+import { Button } from "@/shared/ui/button"
+import localFont from "next/font/local"
+
+import { Container } from "@/shared/ui/container"
+
+import FreeCodeCumpSVGLogo from "../public/free-code-camp-logo.svg"
+
+import Doge from "../public/doge.svg"
+
+const myFont = localFont({
+  src: "../src/shared/assets/fonts/NewFontGGG-Regular.ttf",
+})
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <Container className="grid max-w-prose grid-cols-1 gap-6">
+      <div className="border-secondaryMain relative flex overflow-x-hidden rounded-lg border p-3">
+        <div className="animate-marque flex gap-2 whitespace-nowrap">
+          <div> </div>
+          {[1, 2, 3, 4].map(el => {
+            return <span key={el}>{CreepingLineTextg}</span>
+          })}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+
+        <div className="animate-marque2 absolute flex gap-2 whitespace-nowrap">
+          <div> </div>
+          {[1, 2, 3, 4].map(el => {
+            return <span key={el}>{CreepingLineTextg}</span>
+          })}
+        </div>
+      </div>
+      <div className="flex">
+        <div className="z-20 grow">
+          <p className="text-4xl text-white">Vasilii Buraev</p>
+          <p className="text-orange">They call me The Seeker</p>
+        </div>
+        <div className="shrink-0 overflow-hidden rounded-full border">
+          <Image alt="Profile image" height={96} src={profilePic} width={96} />
+        </div>
+      </div>
+      <div className="flex flex-col">
+        <p className="text-secondaryMain py-2 text-xl">Work</p>
+        <p className="text-textMain text-base">
+          I&apos;m self-taught programmer from Russia. <br />
+          One day I decided to switch career from being bartender. <br />
+          What I didnt know back then is that in the process of learning to code
+          I would soon discover a true passion.
+          <br />
+          I have a five years of experience developing web applications,
+          building websites and contributing to Open Source projects.
+          <br />
+        </p>
+        <div className="flex">
+          <Link passHref href="https://reactjs.org/">
+            <p className="text-secondaryLight underline">React</p>
+          </Link>
+          <p> &nbsp;</p>
+          <p className="text-white">
+            - thats the technology I know best and work daily with.
+          </p>
+        </div>
+        <div className="flex items-center justify-center pt-6">
+          <NavLink
+            className="flex items-center justify-center gap-1"
+            href={"./works"}
+          >
+            <Button className="hover:bg-orange/95 w-full md:w-fit" size="sm">
+              <span className="text-[0.85em] tracking-[0.075em] text-[white] transition-[0.1s] duration-[ease-in-out]">
+                My portfolio
+              </span>
+              <Icon
+                className="h-5 w-5 text-white"
+                name="common/chevron-right"
+              />
+            </Button>
+          </NavLink>
+        </div>
+      </div>
+      <div className="flex flex-col">
+        <p className="text-secondaryMain py-2 text-xl">Bio</p>
+        <div className="flex gap-3">
+          <p className="text-gray-100">1995</p>
+          <p className="text-white">Born in Balakovo, Russia</p>
+        </div>
+        <div className="flex gap-3">
+          <p className="text-gray-50">2012</p>
+          <div className="flex gap-1">
+            <p className="text-white">
+              Graduated from the Physics and Mathematics Lyceum in
+            </p>
+            <Link passHref href="https://reactjs.org/">
+              <p className="text-secondaryLight underline">Semenov</p>
+            </Link>
+          </div>
+        </div>
+        <div className="flex gap-3">
+          <p className="text-gray-50">2013</p>
+          <p className="text-white">Started working as a bartender</p>
+        </div>
+        <div className="flex gap-3">
+          <p className="text-gray-50">2019</p>
+          <p className="text-white">Working as a web developer</p>
+        </div>
+      </div>
+      <div className="flex flex-col">
+        <p className="text-secondaryMain py-2 text-xl">My interests</p>
+        <p className="text-white">
+          Art, Bartending, Industrial Design, Neurobiology, Machine Learning
+        </p>
+      </div>
+      <div className="flex flex-col">
+        <p className="text-secondaryMain py-2 text-xl">On the web</p>
+        <p className="text-white">@buraev</p>
+        <p className="text-white">@buraev_v</p>
+      </div>
+      <div className="flex gap-4">
+        <NewsCard
+          PicSrc={<FreeCodeCumpSVGLogo />}
+          className="flex-1"
+          discription={"Best way learn to code - for free"}
+          title={"freeCodeCamp"}
+        />
+        <NewsCard
+          className="flex-1"
+          discription={"My YouTube channel"}
+          title={"Wu-Shi podcast"}
+        />
+      </div>
+      <Link
+        href={`${process.env.NEXT_PUBLIC_RAUMARO_DISIGN_LINK}`}
+        target="_blank"
+      >
+        <div className="flex justify-center self-center">
+          <h1 className={myFont.className}>design by raumaro</h1>
+          <div className="mt-[5px] ml-3 scale-200">
+            <Doge />
+          </div>
+        </div>
+      </Link>
+    </Container>
+  )
 }
