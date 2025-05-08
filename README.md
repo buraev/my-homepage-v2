@@ -10,6 +10,7 @@
 [`Three.js`](https://threejs.org/)
 [`Prisma`](https://www.prisma.io/)
 [`Auth.js`](https://authjs.dev/)
+[`React Hook Form`](https://react-hook-form.com/)
 
 ## Host
 

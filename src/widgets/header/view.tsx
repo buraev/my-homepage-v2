@@ -1,4 +1,7 @@
+"use client"
 import Link from "next/link"
+
+import { BurgerNavBar } from "../../shared/ui/burgerNavBar/view"
 
 import LoginSVG from "@/app/public/login.svg"
 import Y18 from "@/app/public/y18.svg"
@@ -24,8 +27,6 @@ export const Header = () => {
             <Link href="./">
               <p>Vasilii Buraev</p>
             </Link>
-
-            <span className="h-[18px] w-[1.5px] shrink-0 self-center" />
           </div>
 
           <div className="leading-tighter hidden shrink-0 items-center gap-8 text-base lg:flex">
@@ -73,6 +74,7 @@ export const Header = () => {
             </NavLink>
           </div>
         </nav>
+        <BurgerNavBar />
       </Container>
     </header>
   )
