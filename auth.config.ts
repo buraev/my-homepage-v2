@@ -13,8 +13,8 @@ import { LoginSchema } from "./schemas/shemas"
 export default {
   providers: [
     Github({
-      clientId: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      clientId: process.env.GIT_CLIENT_ID,
+      clientSecret: process.env.GIT_CLIENT_SECRET,
     }),
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID,

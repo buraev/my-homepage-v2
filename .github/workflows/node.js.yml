@@ -13,7 +13,20 @@ jobs:
       matrix:
         node-version: [20.10.0]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+    env:
+      NEXT_PUBLIC_HACKER_NEWS_ITEM: ${{secrets.NEXT_PUBLIC_HACKER_NEWS_ITEM}}
+      NEXT_PUBLIC_HACKER_NEWS_TOP: ${{secrets.NEXT_PUBLIC_HACKER_NEWS_TOP}}
+      DATABASE_URL: ${{secrets.DATABASE_URL}}
+      AUTH_SECRET: ${{secrets.AUTH_SECRET}}
+      GIT_CLIENT_ID: ${{secrets.GIT_CLIENT_ID}}
+      GIT_CLIENT_SECRET: ${{secrets.GIT_CLIENT_SECRET}}
+      GOOGLE_CLIENT_ID: ${{secrets.GOOGLE_CLIENT_ID}}
+      GOOGLE_CLIENT_SECRET: ${{secrets.GOOGLE_CLIENT_SECRET}}
+      RESEND_API_KEY: ${{secrets.RESEND_API_KEY}}
+      NEXT_PUBLIC_RESENT_NEW_VERIFICATION: ${{secrets.NEXT_PUBLIC_RESENT_NEW_VERIFICATION}}
+      NEXT_PUBLIC_RESENT_NEW_PASSWORD: ${{secrets.NEXT_PUBLIC_RESENT_NEW_PASSWORD}}
+      NEXT_PUBLIC_GITHUB_REPO_SOURSE: ${{secrets.NEXT_PUBLIC_GITHUB_REPO_SOURSE}}
+      NEXT_PUBLIC_RAUMARO_DISIGN_LINK: ${{secrets.NEXT_PUBLIC_RAUMARO_DISIGN_LINK}}
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}

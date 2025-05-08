@@ -28,7 +28,7 @@ export const Header = () => {
         )}
       >
         <nav className="xs:justify-between flex items-center justify-center gap-8 sm:self-center lg:col-span-2">
-          <div className="flex gap-2 whitespace-nowrap">
+          <div className="mb-1 flex gap-2 whitespace-nowrap">
             <Link href="./">
               <p className={myFont.className}>vasilii buraev</p>
             </Link>

@@ -37,8 +37,8 @@ export default function Home() {
       </div>
       <div className="flex">
         <div className="z-20 grow">
-          <p className="text-4xl text-white">Vasilii Buraev</p>
-          <p className="text-orange">Super Nintendo, Sega Genesis</p>
+          <p className="text-orange">Super Nintendo</p>
+          <p className="text-orange">Sega Genesis</p>
         </div>
         <div className="shrink-0 overflow-hidden rounded-full border">
           <Image alt="Profile image" height={96} src={profilePic} width={96} />
