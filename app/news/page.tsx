@@ -4,7 +4,6 @@ import { useHackerNews } from "@/app/src/entities/hackernews/model"
 
 export default function News() {
   const { data } = useHackerNews()
-  console.log(data)
   return (
     <div className="mx-auto flex w-full max-w-prose flex-col gap-6">
       <table className="flex flex-col gap-2">

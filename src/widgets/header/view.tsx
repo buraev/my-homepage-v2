@@ -1,4 +1,5 @@
 "use client"
+import localFont from "next/font/local"
 import Link from "next/link"
 
 import { BurgerNavBar } from "../../shared/ui/burgerNavBar/view"
@@ -9,6 +10,10 @@ import Y18 from "@/app/public/y18.svg"
 import { Container } from "@/app/src/shared/ui/container"
 import { NavLink } from "@/app/src/shared/ui/nav-link"
 import { cx } from "@/app/src/shared/utils"
+
+const myFont = localFont({
+  src: "../../shared/assets/fonts/NewFontGGG-Regular.ttf",
+})
 
 export const Header = () => {
   return (
@@ -25,7 +30,7 @@ export const Header = () => {
         <nav className="xs:justify-between flex items-center justify-center gap-8 sm:self-center lg:col-span-2">
           <div className="flex gap-2 whitespace-nowrap">
             <Link href="./">
-              <p>Vasilii Buraev</p>
+              <p className={myFont.className}>vasilii buraev</p>
             </Link>
           </div>
 
