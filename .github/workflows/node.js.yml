@@ -27,6 +27,7 @@ jobs:
       NEXT_PUBLIC_RESENT_NEW_PASSWORD: ${{secrets.NEXT_PUBLIC_RESENT_NEW_PASSWORD}}
       NEXT_PUBLIC_GITHUB_REPO_SOURSE: ${{secrets.NEXT_PUBLIC_GITHUB_REPO_SOURSE}}
       NEXT_PUBLIC_RAUMARO_DISIGN_LINK: ${{secrets.NEXT_PUBLIC_RAUMARO_DISIGN_LINK}}
+      AUTH_TRUST_HOST: ${{secrets.AUTH_TRUST_HOST}}
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
