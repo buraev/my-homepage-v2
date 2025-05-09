@@ -9,15 +9,15 @@ jobs:
   using-github-secrets:
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v3
-      - name: Checkout repository
-      - name: Create .env file
-      - run: |
+    - uses: actions/checkout@v3
+    - name: Checkout repository
+    - name: Create .env file
+    - run: |
           touch .env
           echo "${{secrets.TEST_SECRETS}}" >> .env
-      - name: Test printing your secret (Remove this step in production)
-      - run: |
-            cat .env
+    - name: Test printing your secret (Remove this step in production)
+    - run: |
+          cat .env
       
   build:
     needs: using-github-secrets
