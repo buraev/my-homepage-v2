@@ -5,22 +5,22 @@ on:
     branches: [ "main" ]
 
 jobs:
+
   using-github-secrets:
     runs-on: self-hosted
     steps:
-    - name: Checkout repository
-    uses: actions/checkout@v3
-
-    - name: Create .env file
-    run: |
-        touch .env
-        echo "${{secrets.MY_HOMEPAGE_ENV}}" >> .env
-
-    - name: Test printing your secret (Remove this step in production)
-    run: |
-        cat .env
-
+      - uses: actions/checkout@v3
+      - name: Checkout repository
+      - name: Create .env file
+      - run: |
+          touch .env
+          echo "${{secrets.TEST_SECRETS}}" >> .env
+      - name: Test printing your secret (Remove this step in production)
+      - run: |
+            cat .env
+      
   build:
+    needs: using-github-secrets
 
     runs-on: self-hosted
 
