@@ -10,13 +10,13 @@ jobs:
     runs-on: self-hosted
     steps:
     - name: Checkout repository
-    - uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Create .env file
-    - run: |
+      run: |
           touch .env
           echo "${{secrets.TEST_SECRETS}}" >> .env
     - name: Test printing your secret (Remove this step in production)
-    - run: |
+      run: |
           cat .env
       
   build:
