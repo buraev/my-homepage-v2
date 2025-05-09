@@ -27,9 +27,6 @@ jobs:
       run: |
           touch .env
           echo "${{secrets.MY_HOMEPAGE_ENV}}" >> .env
-    - name: Test printing your secret (Remove this step in production)
-      run: |
-          cat .env
 
     - run: npm run build --if-present
     - run: pm2 restart 0
