@@ -5,22 +5,8 @@ on:
     branches: [ "main" ]
 
 jobs:
-
-  using-github-secrets:
-    runs-on: self-hosted
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-    - name: Create .env file
-      run: |
-          touch .env
-          echo "${{secrets.MY_HOMEPAGE_ENV}}" >> .env
-    - name: Test printing your secret (Remove this step in production)
-      run: |
-          cat .env
-      
+         
   build:
-    needs: using-github-secrets
 
     runs-on: self-hosted
 
@@ -36,5 +22,14 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
+
+    - name: Create .env file
+      run: |
+          touch .env
+          echo "${{secrets.MY_HOMEPAGE_ENV}}" >> .env
+    - name: Test printing your secret (Remove this step in production)
+      run: |
+          cat .env
+
     - run: npm run build --if-present
     - run: pm2 restart 0
