@@ -47,7 +47,7 @@ a {
 body {
   background-color: oklch(26.06% 0.004 84.58);
   color: oklch(82.58% 0.018 81.32);
-  font-family: var(--font-sans);
+  /* font-family: var(--font-sans); */
 }
 
 .baseline::before {

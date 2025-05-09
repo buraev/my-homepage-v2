@@ -13,8 +13,9 @@ import { Icon, NavLink, NewsCard } from "@/shared/ui"
 import { Button } from "@/shared/ui/button"
 import { Container } from "@/shared/ui/container"
 
-const myFont = localFont({
+const myFontLable = localFont({
   src: "../src/shared/assets/fonts/NewFontGGG-Regular.ttf",
+  display: "swap",
 })
 
 export default function Home() {
@@ -137,7 +138,7 @@ export default function Home() {
         target="_blank"
       >
         <div className="flex justify-center self-center">
-          <h1 className={myFont.className}>design by raumaro</h1>
+          <h1 className={myFontLable.className}>design by raumaro</h1>
           <div className="mt-[5px] ml-3 scale-200">
             <Doge />
           </div>

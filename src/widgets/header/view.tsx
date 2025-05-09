@@ -11,8 +11,9 @@ import { Container } from "@/app/src/shared/ui/container"
 import { NavLink } from "@/app/src/shared/ui/nav-link"
 import { cx } from "@/app/src/shared/utils"
 
-const myFont = localFont({
+const myFontHeader = localFont({
   src: "../../shared/assets/fonts/NewFontGGG-Regular.ttf",
+  display: "swap",
 })
 
 export const Header = () => {
@@ -30,7 +31,7 @@ export const Header = () => {
         <nav className="xs:justify-between flex items-center justify-center gap-8 sm:self-center lg:col-span-2">
           <div className="mb-1 flex gap-2 whitespace-nowrap">
             <Link href="/">
-              <p className={myFont.className}>vasilii buraev</p>
+              <p className={myFontHeader.className}>vasilii buraev</p>
             </Link>
           </div>
 

@@ -1,11 +1,11 @@
 import { Suspense } from "react"
 import type { Metadata } from "next"
-import localFont from "next/font/local"
 
 import { Layout } from "./customLayout"
 import Providers from "./providers"
 
 import "../styles/globals.css"
+import localFont from "next/font/local"
 
 export const metadata: Metadata = {
   title: "Vasilii Buraev Homepage",
@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 
 const mainFont = localFont({
   src: "../src/shared/assets/fonts/JetBrainsMono-Regular.woff2",
+  display: "swap",
 })
 
 export default function RootLayout({
