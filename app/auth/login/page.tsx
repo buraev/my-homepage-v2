@@ -154,6 +154,14 @@ export default function Auth() {
 
             <button onClick={() => onClick("gooole")}>gooole</button>
           </div>
+          <div>
+            <Link
+              className="text-primaryLight hover:text-secondaryMain"
+              href="/auth/register"
+            >
+              Don't Have an Account? | Register
+            </Link>
+          </div>
         </form>
       </FormProvider>
       <p className="text-center text-xs text-gray-500">
