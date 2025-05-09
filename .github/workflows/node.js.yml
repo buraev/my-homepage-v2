@@ -7,18 +7,19 @@ on:
 jobs:
   using-github-secrets:
     runs-on: self-hosted
-      steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    steps:
+    - name: Checkout repository
+    uses: actions/checkout@v3
 
-      - name: Create .env file
-        run: |
-            touch .env
-            echo "${{secrets.MY_HOMEPAGE_ENV}}" >> .env
+    - name: Create .env file
+    run: |
+        touch .env
+        echo "${{secrets.MY_HOMEPAGE_ENV}}" >> .env
 
-      - name: Test printing your secret (Remove this step in production)
-        run: |
-            cat .env
+    - name: Test printing your secret (Remove this step in production)
+    run: |
+        cat .env
+
   build:
 
     runs-on: self-hosted
