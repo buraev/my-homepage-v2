@@ -10,6 +10,7 @@ import { DEFAUL_LOGIN_REDIRECT } from "@/app/routes"
 import { RegisterSchema } from "@/app/schemas/shemas"
 import { registerUser } from "@/app/src/entities/auth/register/model"
 import { Button } from "@/app/src/shared/ui"
+import Link from "next/link"
 
 export default function Register() {
   const [errorMessage, setErrorMessage] = useState<string | undefined>()
@@ -108,17 +109,19 @@ export default function Register() {
                 Register
               </span>
             </Button>
-            <a
-              className="text-primaryLight hover:text-secondaryMain inline-block align-baseline text-sm font-bold"
-              href="#"
-            >
-              Forgot Password?
-            </a>
           </div>
           <div className="flex justify-between gap-3">
             <button onClick={() => onClick("github")}>git</button>
 
             <button onClick={() => onClick("gooole")}>gooole</button>
+          </div>
+          <div>
+            <Link
+              className="text-primaryLight hover:text-secondaryMain"
+              href="/auth/login"
+            >
+              Have an Account? | Login
+            </Link>
           </div>
         </form>
       </FormProvider>
