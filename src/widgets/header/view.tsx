@@ -25,7 +25,7 @@ export const Header = () => {
     >
       <Container
         className={cx(
-          "grid grid-cols-[max-content_1fr_max-content] items-center gap-x-4 gap-y-3 xl:gap-x-10",
+          "grid grid-cols-[max-content_1fr_max-content] items-center gap-y-3 xl:gap-x-10",
         )}
       >
         <nav className="xs:justify-between flex items-center justify-center gap-8 sm:self-center lg:col-span-2">

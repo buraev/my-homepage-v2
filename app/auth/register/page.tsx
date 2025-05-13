@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react"
 import { FormProvider, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import Link from "next/link"
 import { signIn } from "next-auth/react"
 import type * as z from "zod"
 
@@ -10,7 +11,6 @@ import { DEFAUL_LOGIN_REDIRECT } from "@/app/routes"
 import { RegisterSchema } from "@/app/schemas/shemas"
 import { registerUser } from "@/app/src/entities/auth/register/model"
 import { Button } from "@/app/src/shared/ui"
-import Link from "next/link"
 
 export default function Register() {
   const [errorMessage, setErrorMessage] = useState<string | undefined>()

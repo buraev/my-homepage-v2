@@ -124,6 +124,7 @@ export default function Home() {
         <NewsCard
           className="flex-1"
           discription={"Best way learn to code - for free"}
+          href="https://www.freecodecamp.org/"
           PicSrc={<FreeCodeCumpSVGLogo />}
           title={"freeCodeCamp"}
         />

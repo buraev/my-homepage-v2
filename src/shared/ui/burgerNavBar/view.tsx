@@ -14,10 +14,10 @@ export const BurgerNavBar = () => {
     setShowNavigation(false)
   }
   return (
-    <nav className="relative">
+    <nav className="felx-1 relative flex justify-end">
       <div className="flex items-center justify-end">
         <button
-          className="dark:focus:accent-primaryLight dark:accent-primaryMain dark:hover:bg-primaryLight flex h-10 w-10 items-center justify-center self-center rounded-lg p-2 text-sm hover:bg-gray-100 lg:hidden"
+          className="dark:focus:accent-primaryLight dark:accent-primaryMain dark:hover:bg-primaryLight flex h-10 w-10 items-center justify-center self-center rounded-lg py-2 text-sm hover:bg-gray-100 lg:hidden"
           data-collapse-toggle="navbar-default"
           type="button"
           onClick={() => setShowNavigation(!showNavigation)}
@@ -38,7 +38,7 @@ export const BurgerNavBar = () => {
                 href="/works"
                 onClick={closeNavigation}
               >
-                W
+                Works
               </NavLink>
               <NavLink
                 activeClassName="underline"
@@ -46,14 +46,14 @@ export const BurgerNavBar = () => {
                 href="/posts"
                 onClick={closeNavigation}
               >
-                P
+                Posts
               </NavLink>
               <NavLink
                 className="hover:underline"
                 href="/devices"
                 onClick={closeNavigation}
               >
-                D
+                Devices
               </NavLink>
               <NavLink
                 className="flex justify-center gap-1 self-center hover:underline"
@@ -70,7 +70,7 @@ export const BurgerNavBar = () => {
                 href={`${process.env.NEXT_PUBLIC_GITHUB_REPO_SOURSE}`}
                 onClick={closeNavigation}
               >
-                S
+                Sourse
               </NavLink>
               <NavLink
                 className="flex justify-center gap-0.5 self-center hover:underline"

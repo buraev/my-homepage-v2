@@ -23,7 +23,7 @@ export const Layout = ({ children, className }: LayoutProps) => {
       {/* <Toaster /> */}
       <Header />
 
-      <main className="xs:pb-20 yargrow pb-15 lg:pb-30">
+      <main className="yargrow pb-8">
         <VoxelMain />
         {children}
       </main>

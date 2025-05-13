@@ -10,7 +10,7 @@
   --color-secondaryMain: oklch(82.58% 0.018 81.32);
   --color-secondaryLight: oklch(99.06% 0.01352908677048263 92.97793627734326);
   --color-textMain: oklch(0.93 0 7.81);
-  --color-orange: oklch(0.56 0.2086 32.66);
+  --color-orange: oklch(0.56 0.2092 32.43);
   --color-error: oklch(65.65% 0.23 39.43);
   --animate-marque: marquee 25s linear infinite;
   --animate-marque2: marquee2 25s linear infinite;
@@ -45,6 +45,14 @@ a {
 }
 
 body {
+  background: linear-gradient(
+    oklch(26.06% 0.004 84.58),
+    oklch(26.56% 0.004 84.58),
+    oklch(25.06% 0.004 84.58),
+    oklch(25.56% 0.004 84.58),
+    oklch(24.06% 0.004 84.58),
+    oklch(23.06% 0.004 84.58)
+  );
   background-color: oklch(26.06% 0.004 84.58);
   color: oklch(82.58% 0.018 81.32);
   /* font-family: var(--font-sans); */
