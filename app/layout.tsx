@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 }
 
 const mainFont = localFont({
-  src: "../src/shared/assets/fonts/Martian_Mono/static/MartianMono-Light.ttf",
+  src: "../src/shared/assets/fonts/JetBrainsMono-Regular.woff2",
   display: "swap",
 })
 
