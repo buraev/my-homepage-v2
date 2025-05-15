@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation"
 import { cx } from "@/shared/utils"
 
 type NavLinkProps = LinkProps & {
-  exact?: boolean
   className?: string
   children?: ReactNode
   activeClassName?: string
@@ -15,7 +14,6 @@ type NavLinkProps = LinkProps & {
 
 export const NavLink = ({
   href,
-  exact,
   children,
   className,
   activeClassName = "",

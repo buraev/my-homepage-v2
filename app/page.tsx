@@ -36,52 +36,37 @@ export default function Home() {
           })}
         </div>
       </div>
-      <div className="flex">
-        <div className="z-20 grow">
-          <p className="text-orange">Super Nintendo</p>
-          <p className="text-orange">Sega Genesis</p>
+      {/* <div className="flex"> */}
+      {/*   <div className="z-20 grow"> */}
+      {/*     <p className="text-orange">Super Nintendo</p> */}
+      {/*     <p className="text-orange">Sega Genesis</p> */}
+      {/*   </div> */}
+      {/*   <div className="shrink-0 overflow-hidden rounded-full border"> */}
+      {/*     <Image alt="Profile image" height={96} src={profilePic} width={96} /> */}
+      {/*   </div> */}
+      {/* </div> */}
+      <div className="flex flex-1 justify-between self-center">
+        <div className="flex flex-col">
+          <p className="text-secondaryMain py-2 text-xl">About</p>
+          <p className="text-textMain text-base">Russian hacker</p>
         </div>
-        <div className="shrink-0 overflow-hidden rounded-full border">
-          <Image alt="Profile image" height={96} src={profilePic} width={96} />
-        </div>
-      </div>
-      <div className="flex flex-col">
-        <p className="text-secondaryMain py-2 text-xl">Work</p>
-        <p className="text-textMain text-base">
-          I&apos;m self-taught programmer from Russia. <br />
-          One day I decided to switch career from being bartender. <br />
-          What I didnt know back then is that in the process of learning to code
-          I would soon discover a true passion.
-          <br />
-          I have a five years of experience developing web applications,
-          building websites and contributing to Open Source projects.
-          <br />
-        </p>
-        <div className="flex">
-          <Link passHref href="https://reactjs.org/">
-            <p className="text-secondaryLight underline">React</p>
-          </Link>
-          <p> &nbsp;</p>
-          <p className="text-white">
-            - thats the technology I know best and work daily with.
-          </p>
-        </div>
-        <div className="flex items-center justify-center pt-6">
-          <NavLink
-            className="flex items-center justify-center gap-1"
-            href={"./works"}
-          >
-            <Button className="hover:bg-orange/95 w-full md:w-fit" size="sm">
-              <span className="text-[0.85em] tracking-[0.075em] text-[white] transition-[0.1s] duration-[ease-in-out]">
-                My portfolio
-              </span>
-              <Icon
-                className="h-5 w-5 text-white"
-                name="common/chevron-right"
-              />
-            </Button>
-          </NavLink>
-        </div>
+
+        {/* <div className="flex items-center justify-center"> */}
+        {/*   <NavLink */}
+        {/*     className="flex items-center justify-center gap-1" */}
+        {/*     href={"./works"} */}
+        {/*   > */}
+        {/*     <Button className="hover:bg-orange/95 w-full md:w-fit" size="sm"> */}
+        {/*       <span className="text-[0.85em] tracking-[0.075em] text-[white] transition-[0.1s] duration-[ease-in-out]"> */}
+        {/*         My portfolio */}
+        {/*       </span> */}
+        {/*       <Icon */}
+        {/*         className="h-5 w-5 text-white" */}
+        {/*         name="common/chevron-right" */}
+        {/*       /> */}
+        {/*     </Button> */}
+        {/*   </NavLink> */}
+        {/* </div> */}
       </div>
       <div className="flex flex-col">
         <p className="text-secondaryMain py-2 text-xl">Bio</p>
@@ -95,7 +80,11 @@ export default function Home() {
             <p className="text-white">
               Graduated from the Physics and Mathematics Lyceum in
             </p>
-            <Link passHref href="https://reactjs.org/">
+            <Link
+              passHref
+              target="_blank"
+              href="https://ru.wikipedia.org/wiki/%D0%A1%D0%B5%D0%BC%D1%91%D0%BD%D0%BE%D0%B2_(%D0%B3%D0%BE%D1%80%D0%BE%D0%B4)"
+            >
               <p className="text-secondaryLight underline">Semenov</p>
             </Link>
           </div>
@@ -111,9 +100,7 @@ export default function Home() {
       </div>
       <div className="flex flex-col">
         <p className="text-secondaryMain py-2 text-xl">My interests</p>
-        <p className="text-white">
-          Art, Bartending, Industrial Design, Neurobiology, Machine Learning
-        </p>
+        <p className="text-white">Art </p>
       </div>
       <div className="flex flex-col">
         <p className="text-secondaryMain py-2 text-xl">On the web</p>

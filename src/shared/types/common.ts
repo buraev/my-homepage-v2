@@ -1,3 +1,4 @@
+import type { ReactNode } from "react"
 import type {
   Control,
   FieldErrors,
@@ -48,4 +49,10 @@ export interface FieldProps<T extends FieldValues> {
   errors: FieldErrors<FieldValues>
   control?: Control<T>
   setValue?: UseFormSetValue<T>
+}
+
+export type NavigationPath = {
+  href: string
+  title: string
+  icon?: ReactNode
 }

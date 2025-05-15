@@ -5,6 +5,7 @@ import { Layout } from "./customLayout"
 import Providers from "./providers"
 
 import "../styles/globals.css"
+
 import localFont from "next/font/local"
 
 export const metadata: Metadata = {
