@@ -12,6 +12,7 @@
   --color-textMain: oklch(0.93 0 7.81);
   --color-orange: oklch(0.56 0.2092 32.43);
   --color-error: oklch(65.65% 0.23 39.43);
+  --color-blue: oklch(0.8123 0.1379 203.04);
   --animate-marque: marquee 25s linear infinite;
   --animate-marque2: marquee2 25s linear infinite;
 
@@ -31,6 +32,75 @@
       transform: translateX(0%);
     }
   }
+
+  @keyframes glitch {
+    0% {
+      transform: translate(0);
+      text-shadow:
+        2px 0 red,
+        -2px 0 cyan;
+    }
+    20% {
+      transform: translate(-1px, 1px);
+      text-shadow:
+        -2px 0 red,
+        2px 0 cyan;
+    }
+    40% {
+      transform: translate(1px, -1px);
+      text-shadow:
+        2px 0 red,
+        -2px 0 cyan;
+    }
+    60% {
+      transform: translate(0);
+      text-shadow:
+        -1px 0 red,
+        1px 0 cyan;
+    }
+    80% {
+      transform: translate(1px, 1px);
+      text-shadow:
+        1px 0 red,
+        -1px 0 cyan;
+    }
+    100% {
+      transform: translate(0);
+      text-shadow:
+        2px 0 red,
+        -2px 0 cyan;
+    }
+  }
+}
+
+.glitch {
+  position: relative;
+  color: cyan;
+  animation: glitch 1s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 red;
+  clip: rect(0, 999px, 0, 0);
+  animation: glitch 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 cyan;
+  clip: rect(0, 999px, 0, 0);
+  animation: glitch 1.5s infinite linear alternate;
 }
 
 * {

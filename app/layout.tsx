@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 }
 
 const mainFont = localFont({
-  src: "../src/shared/assets/fonts/JetBrainsMono-Regular.woff2",
+  src: "../src/shared/assets/fonts/d-din/D-DINExp-Bold.otf",
   display: "swap",
 })
 
