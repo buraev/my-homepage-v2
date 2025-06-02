@@ -3,6 +3,8 @@ import type { Metadata } from "next"
 
 import { Layout } from "./customLayout"
 import Providers from "./providers"
+import { SessionProvider } from "next-auth/react"
+import { auth } from "../auth"
 
 import "../styles/globals.css"
 
@@ -18,20 +20,23 @@ const mainFont = localFont({
   display: "swap",
 })
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const session = await auth()
   return (
-    <html lang="en">
-      <body className={`antialiased`}>
-        <Suspense>
-          <Providers>
-            <Layout className={mainFont.className}>{children}</Layout>
-          </Providers>
-        </Suspense>
-      </body>
-    </html>
+    <SessionProvider session={session}>
+      <html lang="en">
+        <body className={`antialiased`}>
+          <Suspense>
+            <Providers>
+              <Layout className={mainFont.className}>{children}</Layout>
+            </Providers>
+          </Suspense>
+        </body>
+      </html>
+    </SessionProvider>
   )
 }

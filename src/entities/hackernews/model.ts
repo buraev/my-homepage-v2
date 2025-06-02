@@ -37,7 +37,7 @@ export const useHackerNews = (
 ): UseQueryResult<HackerNewsType> => {
   const ps = qs.stringify(params, { addQueryPrefix: true, skipNulls: true })
   return useQuery<HackerNewsType>({
-    queryKey: ["person"],
+    queryKey: ["hackerNews"],
     queryFn: async () => await main(),
     refetchOnWindowFocus: false,
     ...options,
