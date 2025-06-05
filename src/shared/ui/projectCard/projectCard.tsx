@@ -4,10 +4,34 @@ import LiveCard from "../liveCard/liveCard"
 import Since from "../time/since/since"
 import StyledCard from "../card/styledCard"
 
-export default function ProjectsSection({ projects, loading }: any) {
+interface IProjectSession {
+  projects: IProjects
+  loading: boolean
+}
+
+interface IProjects {
+  data: Repository[]
+  updated: Date
+}
+
+type Repository = {
+  id: string
+  name: string
+  owner: string
+  description: string
+  language: string
+  language_color: string
+  updated_at: Date
+  url: string
+}
+
+export default function ProjectsSection({
+  projects,
+  loading,
+}: IProjectSession) {
   const updatedProjects = useMemo(() => {
-    return projects?.data?.map((p: any) => {
-      const hexToRgb = (hex: any) => {
+    return projects?.data?.map(p => {
+      const hexToRgb = (hex: string) => {
         const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
         return result
           ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}`
@@ -35,7 +59,7 @@ export default function ProjectsSection({ projects, loading }: any) {
       ) : projects ? (
         <>
           <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
-            {updatedProjects?.map((project: any) => (
+            {updatedProjects?.map(project => (
               <StyledCard key={project.id}>
                 <a
                   href={project.url}
