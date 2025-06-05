@@ -18,7 +18,7 @@ const myFontLable = localFont({
 })
 
 export default function Home() {
-  const { data } = useGitHubLiveData()
+  const { data, isFetching, isError } = useGitHubLiveData()
 
   return (
     <Container className="grid grid-cols-1 gap-6">
@@ -38,7 +38,7 @@ export default function Home() {
         </div>
       </div>
 
-      <ProjectsSection projects={data} />
+      <ProjectsSection projects={data} loading={isFetching} error={isError} />
 
       <div className="flex gap-4">
         <NewsCard

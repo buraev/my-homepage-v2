@@ -19,9 +19,17 @@ interface Props {
   name: string
   liveData?: LiveData
   children: React.ReactNode
+  error: boolean
+  loading: boolean
 }
 
-const LiveCard: React.FC<Props> = ({ name, liveData, children }) => {
+const LiveCard: React.FC<Props> = ({
+  name,
+  liveData,
+  children,
+  error,
+  loading,
+}) => {
   return (
     <StyledCard padding="0">
       <section id={name.toLowerCase()} className="flex w-full flex-col">
@@ -66,9 +74,9 @@ const LiveCard: React.FC<Props> = ({ name, liveData, children }) => {
         <div className="flex flex-col gap-4 p-2 sm:p-3">{children}</div>
 
         {liveData && (
-          <p className="border-green-border bg-green-background text-green-foreground mt-1 flex items-center justify-center border-t px-2 py-1 font-mono text-sm font-medium">
-            {liveData.updated ? (
-              <>
+          <>
+            {liveData.updated && (
+              <p className="border-green-border bg-green-background text-green-foreground mt-1 flex items-center justify-center border-t px-2 py-1 font-mono text-sm font-medium">
                 Data
                 <span className="hidden sm:inline">
                   &nbsp;cached & processed&nbsp;
@@ -77,7 +85,7 @@ const LiveCard: React.FC<Props> = ({ name, liveData, children }) => {
                 by&nbsp;
                 <a
                   href="https://github.com/buraev/gochette"
-                  className="text-inherit underline"
+                  className="text-inherit"
                 >
                   gochette
                 </a>
@@ -85,10 +93,18 @@ const LiveCard: React.FC<Props> = ({ name, liveData, children }) => {
                 <span className="hidden sm:inline">[</span>
                 <Since time={liveData.updated} />
                 <span className="hidden sm:inline">]</span>
-              </>
-            ) : (
-              "loading"
+              </p>
             )}
+          </>
+        )}
+        {loading && (
+          <p className="border-green-border bg-green-background text-green-foreground mt-1 flex items-center justify-center border-t px-2 py-1 font-mono text-sm font-medium">
+            <span> loading</span>
+          </p>
+        )}
+        {error && (
+          <p className="border-red-border bg-red-background text-red-foreground mt-1 flex items-center justify-center border-t px-2 py-1 font-mono text-sm font-medium">
+            <span> error</span>
           </p>
         )}
       </section>

@@ -3,31 +3,19 @@ import GitHubIcon from "@/app/public/git.svg"
 import LiveCard from "../liveCard/liveCard"
 import Since from "../time/since/since"
 import StyledCard from "../card/styledCard"
+import { ProjectRepoList } from "@/app/src/entities/liveData/gitHubLiveData/type"
+import Alert from "../alert/alert"
 
 interface IProjectSession {
-  projects: IProjects
+  projects: ProjectRepoList | undefined
   loading: boolean
-}
-
-interface IProjects {
-  data: Repository[]
-  updated: Date
-}
-
-type Repository = {
-  id: string
-  name: string
-  owner: string
-  description: string
-  language: string
-  language_color: string
-  updated_at: Date
-  url: string
+  error: boolean
 }
 
 export default function ProjectsSection({
   projects,
   loading,
+  error,
 }: IProjectSession) {
   const updatedProjects = useMemo(() => {
     return projects?.data?.map(p => {
@@ -53,10 +41,10 @@ export default function ProjectsSection({
         ],
         updated: projects?.updated,
       }}
+      error={error}
+      loading={loading}
     >
-      {loading ? (
-        <div>loading</div>
-      ) : projects ? (
+      {projects && (
         <>
           <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
             {updatedProjects?.map(project => (
@@ -99,18 +87,39 @@ export default function ProjectsSection({
           </div>
 
           <div className="mt-4 text-center">
-            <a
-              href="https://github.com/buraev?tab=repositories"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span>View more on GitHub</span>
-            </a>
+            <span>
+              View more on{" "}
+              <a
+                href="https://github.com/buraev?tab=repositories"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline"
+              >
+                GitHub
+              </a>
+            </span>
           </div>
         </>
-      ) : (
-        <div>loading</div>
-        // <Error msg="Failed to load project data" />
+      )}
+      {loading && <div>loading</div>}
+      {error && (
+        <>
+          <Alert msg="Failed to load project data" />
+
+          <div className="text-center">
+            <span>
+              While I'm fixing this, you can check out my projects on{" "}
+              <a
+                href="https://github.com/buraev?tab=repositories"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline"
+              >
+                GitHub
+              </a>
+            </span>
+          </div>
+        </>
       )}
     </LiveCard>
   )
