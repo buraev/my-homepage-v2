@@ -1,0 +1,102 @@
+import {
+  GeneresListFormSchema,
+  GeneresListSchema,
+  GenresList,
+} from "@/app/src/entities/geners/types"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useEffect } from "react"
+import {
+  FormProvider,
+  SubmitHandler,
+  useFieldArray,
+  useForm,
+} from "react-hook-form"
+import { z } from "zod"
+import { Button } from "../button"
+import { error } from "console"
+import {
+  useDeleteGenre,
+  useMutateGenres,
+} from "@/app/src/entities/geners/hooks"
+
+interface IGenerateTable {
+  genres: GenresList[] | undefined
+}
+
+export const GenresTable = ({ genres }: IGenerateTable) => {
+  const { mutate } = useMutateGenres()
+
+  const { mutate: deleteGenre } = useDeleteGenre()
+
+  const methods = useForm<GeneresListFormSchema>({
+    mode: "onBlur",
+    resolver: zodResolver(GeneresListSchema),
+  })
+
+  const {
+    handleSubmit,
+    formState: { errors, isValid },
+    control,
+    reset,
+    watch,
+    register,
+  } = methods
+
+  const formValues = watch()
+
+  const { fields, append } = useFieldArray({
+    control,
+    name: "fields",
+  })
+  const watchFieldArray = watch("fields")
+  const controlledFields = fields.map((field, index) => {
+    return {
+      ...field,
+      ...watchFieldArray[index],
+    }
+  })
+
+  useEffect(() => {
+    reset({
+      fields: genres?.map(el => {
+        return { name: el.name, url: el.url, id: el.id }
+      }),
+    })
+  }, [genres])
+
+  const onSubmit: SubmitHandler<GeneresListFormSchema> = data =>
+    mutate(data.fields)
+
+  const handleDeleteGenre = (id: string) => {
+    deleteGenre(id)
+  }
+
+  return (
+    <form
+      className="flex flex-col gap-6"
+      onSubmit={() => handleSubmit(onSubmit)}
+    >
+      <ul className="flex flex-1 list-none flex-col justify-between">
+        {controlledFields.map((field, index) => {
+          return (
+            <li className="flex" key={field.id}>
+              <input
+                {...register(`fields.${index}.name` as const)}
+                className="flex flex-1"
+              />
+              <input
+                {...register(`fields.${index}.url` as const)}
+                className="flex flex-1"
+              />
+              <button onClick={() => handleDeleteGenre(field.id)}>
+                delete
+              </button>
+            </li>
+          )
+        })}
+      </ul>
+
+      <Button type="submit">submit</Button>
+    </form>
+  )
+}
