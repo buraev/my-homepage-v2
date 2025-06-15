@@ -4,17 +4,11 @@ import {
   useQuery,
   useQueryClient,
 } from "@tanstack/react-query"
-import { getTags } from "./model"
+import { getTags } from "./models"
+import { IResponseTags, Tag } from "./types"
 import axios from "axios"
-import { Tag } from "resend"
 
-interface IResponseGenres {
-  data: Tag[] | undefined
-  isFetching: boolean
-  isError: boolean
-}
-
-export const useTags = (): IResponseGenres => {
+export const useTags = (): IResponseTags => {
   const { data, isFetching, isError } = useQuery<Tag[]>({
     queryKey: ["tagsList"],
     queryFn: async () => await getTags(),
@@ -24,13 +18,13 @@ export const useTags = (): IResponseGenres => {
   return { data, isFetching, isError }
 }
 
-export function useMutateGenres() {
+export function useAppendTag() {
   const qc = useQueryClient()
   const { mutate, isPending, isSuccess } = useMutation({
-    mutationFn: (req: Omit<any, "id">[]) =>
-      axios.post(`${process.env.NEXT_PUBLIC_BOT_API_URL}/genres`, req),
+    mutationFn: (req: Omit<Tag, "id">) =>
+      axios.post(`${process.env.NEXT_PUBLIC_BOT_API_URL}/tags`, req),
     onSuccess: () => {
-      qc.invalidateQueries(["genres"] as InvalidateQueryFilters)
+      qc.invalidateQueries(["tags"] as InvalidateQueryFilters)
       console.log("OK")
     },
   })
@@ -42,13 +36,13 @@ export function useMutateGenres() {
   }
 }
 
-export function useUpdateGenre() {
+export function useUpdateTag() {
   const qc = useQueryClient()
   const { mutate, isPending, isSuccess } = useMutation({
-    mutationFn: (req: any[]) =>
-      axios.put(`${process.env.NEXT_PUBLIC_BOT_API_URL}/genres`, ...req),
+    mutationFn: (req: Tag) =>
+      axios.put(`${process.env.NEXT_PUBLIC_BOT_API_URL}/tags`, req),
     onSuccess: () => {
-      qc.invalidateQueries(["genres"] as InvalidateQueryFilters)
+      qc.invalidateQueries(["tags"] as InvalidateQueryFilters)
       console.log("OK")
     },
   })
@@ -60,13 +54,13 @@ export function useUpdateGenre() {
   }
 }
 
-export function useDeleteGenre() {
+export function useDeleteTag() {
   const qc = useQueryClient()
   const { mutate, isPending, isSuccess } = useMutation({
     mutationFn: (req: string) =>
-      axios.delete(`${process.env.NEXT_PUBLIC_BOT_API_URL}/genres?id=${req}`),
+      axios.delete(`${process.env.NEXT_PUBLIC_BOT_API_URL}/tags?id=${req}`),
     onSuccess: () => {
-      qc.invalidateQueries(["genres"] as InvalidateQueryFilters)
+      qc.invalidateQueries(["tags"] as InvalidateQueryFilters)
       console.log("OK")
     },
   })

@@ -1,11 +1,5 @@
 import { z } from "zod"
 
-export interface GenresList {
-  id: string
-  name: string
-  url: string
-}
-
 export const GeneresListSchema = z.object({
   fields: z.array(
     z.object({

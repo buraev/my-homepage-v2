@@ -98,46 +98,6 @@ export const variants = cva(
   },
 )
 
-/**
- * Компонент Кнопки.
- *
- * Принимает все стандартные свойства HTML кнопки, а также дополнительные свойства
- *
- * @public
- *
- * @component
- *
- * @property {boolean} [pending] - флаг состояния "загрузка"
- *
- * @property {boolean} [disabled] - флаг неактивной кнопки
- *
- * @property {Size} [size = md] - размер кнопки
- *
- * @property {Variant} [variant = primary] - вариант
- *
- * @property {() => void} [onClick] - обработчик
- *
- * @property {string} [className] - дополнительные стили
- *
- * @property {string} [colors = green] - цвет кнопки
- *
- * @property {string} [color] - цвет кнопки
- *
- * @property {string} [type = button] - тип кнопки
- *
- * @example
- *
- * ```tsx
- * import { Button } from '@esia-frontend/ui-kit';
- *
- * <Button
- *   size="md"
- *   variant="primary"
- *   onClick={() => console.log('click')}>
- *    Жмакнуть
- * </Button>
- * ```
- */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => {
     const {

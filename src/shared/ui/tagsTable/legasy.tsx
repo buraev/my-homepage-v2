@@ -3,7 +3,6 @@ import {
   AppendGenreFormSchema,
   GeneresListFormSchema,
   GeneresListSchema,
-  GenresList,
 } from "@/app/src/entities/geners/types"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useEffect, useState } from "react"
@@ -16,10 +15,10 @@ import {
 } from "@/app/src/entities/geners/hooks"
 
 interface IGenerateTable {
-  genres: GenresList[] | undefined
+  tags: any[] | undefined
 }
 
-export const GenresTable = ({ genres }: IGenerateTable) => {
+export const TagsTable = ({ tags }: IGenerateTable) => {
   const [updatedfieldId, setUpdatedFieldId] = useState("")
 
   const { mutate } = useMutateGenres()
@@ -67,11 +66,11 @@ export const GenresTable = ({ genres }: IGenerateTable) => {
 
   useEffect(() => {
     reset({
-      fields: genres?.map(el => {
+      fields: tags?.map(el => {
         return { name: el.name, url: el.url, id: el.id }
       }),
     })
-  }, [genres])
+  }, [tags])
 
   const onSubmit: SubmitHandler<AppendGenreFormSchema> = data =>
     mutate([data], {
